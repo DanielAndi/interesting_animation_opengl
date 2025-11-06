@@ -1,0 +1,24 @@
+# Build directories
+build/
+out/
+
+# Compiled files
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.out
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Editor backups
+*.bak
+*.tmp
+
