@@ -1,5 +1,7 @@
 #include "window/Window.hpp"
 #include "scene/Scene.hpp"
+#include "core/Controls.hpp"
+#include <GLFW/glfw3.h>
 #include <iostream>
 
 int main() {
@@ -24,8 +26,22 @@ int main() {
     // Add mountain model to scene at origin (0,0,0)
     scene.addObject("models/mountain/mount.blend1.obj", 0.0f, 0.0f, 0.0f);
 
+    // Create controls for camera
+    Controls controls(window, scene.getCamera());
+    
+    // Time tracking for deltaTime calculation
+    double lastTime = glfwGetTime();
+
     // Main loop
     while (!window.shouldClose()) {
+        // Calculate deltaTime
+        double currentTime = glfwGetTime();
+        float deltaTime = static_cast<float>(currentTime - lastTime);
+        lastTime = currentTime;
+        
+        // Update controls (camera movement and rotation)
+        controls.update(deltaTime);
+        
         // Clear the screen
         window.clear(0.2f, 0.3f, 0.3f, 1.0f);
 

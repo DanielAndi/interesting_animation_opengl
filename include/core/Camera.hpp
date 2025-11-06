@@ -21,6 +21,15 @@ public:
     float getPositionX() const { return m_position[0]; }
     float getPositionY() const { return m_position[1]; }
     float getPositionZ() const { return m_position[2]; }
+    
+    // Movement methods
+    void moveForward(float distance);
+    void moveRight(float distance);
+    void moveUp(float distance);
+    
+    // Rotation methods
+    void rotateYaw(float angle);
+    void rotatePitch(float angle);
 
 private:
     void calculateViewMatrix();
