@@ -51,6 +51,17 @@ bool Window::initialize() {
     // Set viewport
     glViewport(0, 0, m_width, m_height);
 
+    // Enable depth testing
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    
+    // Disable face culling to see both sides
+    glDisable(GL_CULL_FACE);
+    
+    // Enable blending for transparency if needed
+    // glEnable(GL_BLEND);
+    // glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     std::cout << "Window initialized successfully" << std::endl;
     std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
 
@@ -81,6 +92,6 @@ void Window::pollEvents() {
 
 void Window::clear(float r, float g, float b, float a) {
     glClearColor(r, g, b, a);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
